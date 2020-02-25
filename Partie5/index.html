@@ -1,0 +1,102 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Partie 5</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="d3.js"></script>
+	<style type="text/css">
+		table, tr, td{
+			margin: auto;
+			border: 3px solid black;
+			border-collapse: collapse;
+		}
+		td{			
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+
+	</style>
+</head>
+<body>	
+	
+		<h2 style="text-align: center">1. Utilisez d3js et autres scripts pour présentez les données sous la forme d'une table</h2>
+		<script type="text/javascript">
+//création du tableauA pour répondre à la question 1
+		var tableauA = d3.select("body")
+		.append("table")
+		.style("border-collapse","collapse");
+		var title = tableauA
+		.append("tr");
+		title.selectAll("td").data(["","IDY", "MADICKE","MACKY","SONKO", "ISSA SALL"]).enter().append("td").text(function(d){return d;});
+
+//chargement de données du fichier csv
+		d3.csv("data.csv", function(data){
+
+			var election =  [
+				REGION	= data.REGION,
+				IDY		= data.IDY,
+				MADICKE	= data.MADICKE,
+				MACKY	= data.MACKY,
+				SONKO	= data.SONKO,
+				ISSASALL= data.ISSASALL,
+			];
+			
+			var rows = tableauA.append("tr");
+			rows.selectAll("td")
+			.data(election)
+			.enter()
+			.append("td")
+			.text(function(d){return d;})
+		});
+
+		</script>
+		</br>
+	</br>
+</br>
+<h2 style="text-align: center">2. Sachant que pour être candidat à l'élection, il fallait avoir au moins 53000 parrains</h2>
+		<script type="text/javascript">
+		//création du tableau pour la question 2
+		var tableau = d3.select("body")
+		.append("table")
+		.style("border-collapse","collapse");
+		var title = tableau.append("tr");
+		title.selectAll("td")
+			.data(["","IDY", "MADICKE","MACKY","SONKO", "ISSA SALL"])
+			.enter()
+			.append("td")
+			.text(function(d){return d;});
+
+//chargement de données et afichage avec les conditions pour répondre a la question 2
+		d3.csv("data.csv", function(data){
+
+			var election=  [
+				REGION	= data.REGION,
+				IDY		= data.IDY,
+				MADICKE	= data.MADICKE,
+				MACKY	= data.MACKY,
+				SONKO	= data.SONKO,
+				ISSASALL= data.ISSASALL,
+			];
+			
+			var rows = tableau.append("tr");
+			rows.selectAll("td")
+			.data(election)
+			.enter()
+			.append("td")
+			.text(function(d){return d;})
+			.style("background-color",function(d){
+				if (d>=0 && d<=26500){
+					return "yellow";
+				}
+				if(d>26500 && d<=53000){
+					return "orange";
+				}
+				if(d>53000){return "green";}
+			});
+		});
+	</script>  
+            
+</body>
+</html>

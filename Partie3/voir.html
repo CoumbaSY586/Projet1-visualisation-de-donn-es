@@ -1,0 +1,278 @@
+<html>
+    <head>
+     <meta charset="utf-8">
+     <script src="d3.js"></script>
+     <title>Village</title>
+    </head>
+<body>
+    <style>
+    
+      #cadre{
+        background-image:linear-gradient(to bottom, #86ADD4, #FDFFFF);
+        border:3px solid black;
+        width : 1200px;
+        height: 650px;
+        margin-left:100px; 
+      }
+    </style>
+    
+    <div id ="cadre"></div>
+    
+    <script>
+      //le cadre de dessin
+        var svg = d3.select("#cadre").append("svg")
+        .attr("width", "100%")
+        .attr("height", "100%")
+        
+       var group = svg.append("g");
+       for(var i =0; i<3; i++)
+        {
+           //les cases: grands rectangles
+         group.append("rect")  
+         .attr("x", 40+150*i)
+         .attr("y",590)
+         .attr("width", 100)
+         .attr("height", 70)
+         .style("fill", "#9E661D")
+         .style("stroke", "black")
+         .style("stroke-width","2");
+
+         //les petits rectangles des cases
+         group.append("rect")
+         .attr("x", 80+150*i)
+         .attr("y",620)
+         .attr("width", 20)
+         .attr("height", 30)
+         .style("fill", "black")
+         .style("stroke", "black")
+         .style("stroke-width","2");
+
+         //toits des cases
+        group.append("polyline")
+      .attr("points", "40,590,90,555,115,540,65,540,90,555,140,590")
+        .attr("fill", "#D1A060")
+        .style("stroke", "black")
+        .style("stroke-width","2");
+
+        group.append("polyline")
+        .attr("points", "190,590,240,555,265,540,215,540,240,555,290,590")
+        .attr("fill", "#D1A060")
+        .style("stroke", "black")
+        .style("stroke-width","2");
+        
+        group.append("polyline")
+        .attr("points", "340,590,390,555,415,540,365,540,390,555,440,590")
+        .attr("fill", "#D1A060")
+        .style("stroke", "black")
+        .style("stroke-width","2"); 
+        
+        }
+
+        // le soleil
+        svg.append("circle")
+        .attr("cx", 1090)
+        .attr("cy", 150)
+        .attr("r",50)
+        .attr("fill", "#F7CB19")
+        .style("stroke", "#F7CB19")
+        .style("stroke-width","2");
+         
+        //tige de l'arbre650,685,655,650,650,635,655,610,650,575
+        group.append("polyline")
+        .attr("points", "650,655,655,615,650,600,655,575,650,545")
+        .style("stroke", "#613A08")
+        .style("stroke-width","10");
+
+        //Feuilles d'arbres
+        svg.append("circle")
+        .attr("cx", 650)
+        .attr("cy", 550)
+        .attr("r",40)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+        
+        //les arrondis
+        svg.append("circle")
+        .attr("cx", 650)
+        .attr("cy", 560)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 610)
+        .attr("cy", 560)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 615)
+        .attr("cy", 540)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 635)
+        .attr("cy", 520)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 655)
+        .attr("cy", 510)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 675)
+        .attr("cy", 520)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 685)
+        .attr("cy", 540)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 695)
+        .attr("cy", 560)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 700)
+        .attr("cy", 570)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 695)
+        .attr("cy", 565)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        svg.append("circle")
+        .attr("cx", 680)
+        .attr("cy", 570)
+        .attr("r",20)
+        .attr("fill", "green")
+        .style("stroke", "green")
+        .style("stroke-width","2");
+
+        //les batons du puits
+        svg.append("polyline")
+        .attr("points", "800,675,805,640,800,625,805,590,800,575,805,550,805,575")
+        .style("stroke", "#613A08")
+        .style("stroke-width","5")
+        .style("fill", "none");
+
+        svg.append("polyline")
+        .attr("points", "1100,685,1105,650,1100,635,1105,610,1100,575,1105,550,1100,575")
+        .style("stroke", "#613A08")
+        .style("stroke-width","5")
+        .style("fill", "none");
+
+        svg.append("polyline")
+        .attr("points", "750,570,1150,570")
+        .style("stroke", "#613A08")
+        .style("stroke-width","5");
+
+       //puits
+        svg.append("rect")
+         .attr("x", 915)
+         .attr("y",605)
+         .attr("width", 80)
+         .attr("height", 80)
+         .style("fill", "gray")
+         .style("stroke", "black")
+         .style("stroke-width","2");
+
+       //poulie
+         svg.append("circle")
+        .attr("cx", 955)
+        .attr("cy", 575)
+        .attr("r",9)
+        .attr("fill", "black")
+        .style("stroke", "black")
+        .style("stroke-width","2");
+
+        //cordes
+        svg.append("polyline")
+        .attr("points", "945,606,943,600,945,573,963,573,965,600,963,606")
+        .style("stroke", "black")
+        .style("stroke-width","2")
+        .style("fill","none");
+
+        //oiseaux
+        svg.append("polyline")
+        .attr("points", "1150,95,1160,100,1165,105,1170,100,1180,95")
+        .style("stroke", "black")
+        .style("stroke-width","7")
+        .style("fill","none");
+
+        svg.append("polyline")
+        .attr("points", "850,95,860,100,865,105,870,100,880,95")
+        .style("stroke", "black")
+        .style("stroke-width","7")
+        .style("fill","none");
+
+
+        svg.append("polyline")
+        .attr("points", "920,95,930,100,935,105,940,100,950,95")
+        .style("stroke", "black")
+        .style("stroke-width","7")
+        .style("fill","none");
+
+        svg.append("polyline")
+        .attr("points", "900,150,910,155,915,160,920,155,930,150")
+        .style("stroke", "black")
+        .style("stroke-width","7")
+        .style("fill","none");
+      
+        svg.append("polyline")
+        .attr("points", "970,160,980,165,985,170,990,165,1000,160")
+        .style("stroke", "black")
+        .style("stroke-width","7")
+        .style("fill","none");
+
+        svg.append("polyline")
+        .attr("points", "930,170,940,175,945,180,950,175,960,170")
+        .style("stroke", "black")
+        .style("stroke-width","7")
+        .style("fill","none");
+        
+        svg.append("polyline")
+        .attr("points", "960,190,970,195,975,200,980,195,990,190")
+        .style("stroke", "black")
+        .style("stroke-width","7")
+        .style("fill","none");
+
+        
+
+        
+    </script>
+
+</body>
+</html>

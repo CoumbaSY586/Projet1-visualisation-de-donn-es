@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Partie 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="saisie">
+        <h2 style="margin-left:20px;">PANNEAU DE SAISIE</h2>
+        <form id="formulaire">
+            <label for="nom">Nom de l'employé</label>
+            <input type="text" id="nom"></br>
+            </br>
+            <label for="cat"> Catégorie</label>
+            <select id="categorie" name="Categorie">
+              <option value="A">Catégorie A</option>
+              <option value="B">Catégorie B</option>
+              <option value="C">Catégorie C</option>
+            </select></br>
+            </br>
+            <label for="heures">Nombre d'heures</label>
+            <input type="number" value=1 40 id="heure" readonly></br>
+            </br>
+
+
+            <text style="margin-left:10px;">A-t-il effectué des heures supplémentaires ?</text>
+            </br><input type="radio" id="rep1" name="rep" value="" checked="checked" style="margin-left:10px;">Oui
+            </br><input type="radio" id="rep2" name="rep" value="" style="margin-left:10px;">Non</br>
+            </br>
+
+
+            <label for="sup">Heures sup.</label>
+            <input type="number" value=0 id="sup"></br>
+            </br>
+
+            <label for="avantage">Avantage</label>
+            <input type="number" value=2500 id="prime"></br>
+            </br>
+        </form>
+
+        <input type="button" id="add" value="Ajouter" class="ajouter" onclick="ajouterLigne('table');">
+        <input type="button" value="Annuler" class="annuler" onclick="annuler('table');">
+
+    </div>
+    <div id="enregistrer">
+        <h2 style="margin-left:10px;">ENREGISTREMENT</h2>
+        <table id="table">
+            <tr>
+                <td>Nom</td>
+                <td>Salaire</td>
+                <td>RAS</td>
+                <td>Salaire Net</td>
+            </tr>
+
+
+        </table>
+    </div>
+    <script type="text/javascript">
+        function ajouterLigne(tableau) {
+
+            col1 = document.getElementById("nom").value; //nom
+            categorie = document.getElementById("categorie").value; //catégorie
+            HS = document.getElementById("sup").value; //heures supplémentaires
+            heure = document.getElementById("heure").value + HS; //nombres d'heures totales
+            prime = document.getElementById("prime").value; //avantage
+
+            salaireHS = 0; //variable pour calculer le salaire majoré des heures supléméntaires
+            SB = 0; //Salaire de base qui est fixe selon la catégorie
+            impot = 0; //impôt sur salaire selon la catégorie
+            col2 = 0; //le montant de l'impôt
+            col3 = 0; //RAS
+            col4 = 0; //SalaireNet
+
+            if (categorie == "A") //si la catégorie = "A"
+            {
+                SB = 140 * 10000;
+                impot = 0.1; // impot = 10%
+                if (heure == 145) {
+
+                    salaireHS = (HS + 0.3) * 10000;
+                    col2 = SB + salaireHS + parseInt(prime);
+                    col4 = col2 - (col2 * impot);
+                    col3 = impot * col2;
+
+                }
+
+                if (heure > 145) {
+
+                    salaireHS = (HS + 0.45) * 10000;
+                    col2 = SB + salaireHS + parseInt(prime);
+                    col4 = col2 - (col2 * impot);
+                    col3 = impot * col2;
+
+                }
+            }
+            if (categorie == "B") //si la catégorie = "B"
+            {
+                SB = 140 * 7500;
+                impot = 0.075; // impot = 7.5%
+                if (heure == 145) {
+
+                    salaireHS = (HS + 0.3) * 7500;
+                    col2 = SB + salaireHS + parseInt(prime);
+                    col4 = col2 - (col2 * impot);
+                    col3 = impot * col2;
+
+                }
+
+                if (heure > 145) {
+                    salaireHS = (HS + 0.45) * 7500;
+                    col2 = SB + salaireHS + parseInt(prime);
+                    col4 = col2 - (col2 * impot);
+                    col3 = impot * col2;
+
+                }
+
+            }
+            if (categorie == "C") //si la catégorie = "C"
+            {
+                SB = 140 * 5000;
+                impot = 0.05; //impot = 5%
+                if (heure == 145) {
+                    salaireHS = (HS + 0.3) * 5000;
+                    col2 = SB + salaireHS + parseInt(prime);
+                    col4 = col2 - (col2 * impot);
+                    col3 = impot * col2;
+
+                }
+
+                if (heure > 145) {
+                    salaireHS = (HS + 0.45) * 5000;
+                    col2 = SB + salaireHS + parseInt(prime);
+                    col4 = col2 - (col2 * impot);
+                    col3 = impot * col2;
+
+                }
+            }
+            //recupération de l'enregistrement
+            tableau = document.getElementById(tableau);
+            //on insère dans le tableau
+            var tr = tableau.insertRow(-1);
+            var td = tr.insertCell(0)
+            td.innerHTML = col1;
+            td = tr.insertCell(1);
+            td.innerHTML = col2;
+            td = tr.insertCell(2);
+            td.innerHTML = col3;
+            td = tr.insertCell(3);
+            td.innerHTML = col4;
+
+
+        }
+
+        //La fonction Annuler
+
+        function annuler(tableau) {
+            //recupération du tableau
+            tableau = document.getElementById(tableau);
+            //on annule l'enregistrement
+            tableau.deleteRow(-1);
+        }
+    </script>
+</body>
+
+</html>

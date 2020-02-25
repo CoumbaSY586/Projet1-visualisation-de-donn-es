@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        FORM {
+            position: absolute;
+            left: 40%;
+            top: 400px;
+        }
+        
+        SELECT {
+            border: 4px solid black;
+            width: 200px;
+            height: 60px;
+        }
+        
+        img {
+            margin-left: 500px;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="margin-left:600px;">Elections Présidentielles 2019</h2>
+    <img src="photo.jpg" />
+    <FORM NAME="candidat">
+        <SELECT NAME="selection" onChange="rediriger()">
+            <OPTION VALUE="">Choisir un candidat
+            <OPTION VALUE="Macky.html">Macky SALL    
+            <OPTION VALUE="Ousmane.html">Ousmane SONKO
+            <OPTION VALUE="idy.html">Idrissa SECK
+            <OPTION VALUE="issa.html">Issa SALL
+            <OPTION VALUE="Madicke.html">Madicke NIANG
+        </SELECT>
+    </FORM>
+
+    <script>
+        function rediriger() {
+            i = document.candidat.selection.selectedIndex;
+            if (i == 0) return;
+            lien = document.candidat.selection.options[i].value;
+            parent.location.href = lien;
+        }
+    </script>
+
+</body>
+
+</html>
